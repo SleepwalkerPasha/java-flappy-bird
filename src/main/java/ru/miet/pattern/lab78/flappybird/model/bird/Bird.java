@@ -1,4 +1,4 @@
-package ru.miet.pattern.lab78.flappybird;
+package ru.miet.pattern.lab78.flappybird.model.bird;
 
 import javax.imageio.ImageIO;
 import java.awt.Color;
@@ -6,6 +6,9 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
+
+import static ru.miet.pattern.lab78.flappybird.utils.GraphicUtils.HEIGHT;
+import static ru.miet.pattern.lab78.flappybird.utils.GraphicUtils.WIDTH;
 
 public class Bird implements BirdObserver {
     private double xCoord;
@@ -23,8 +26,8 @@ public class Bird implements BirdObserver {
     private static Bird bird;
 
     private Bird() throws IOException {
-        xCoord = FlappyBird.WIDTH / 2.0;
-        yCoord = FlappyBird.HEIGHT / 2.0;
+        xCoord = WIDTH / 2.0;
+        yCoord = HEIGHT / 2.0;
         img = ImageIO.read(new File("src/main/resources/sticker,375x360.u2.png"));
     }
 

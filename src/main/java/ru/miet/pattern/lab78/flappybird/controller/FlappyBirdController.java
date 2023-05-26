@@ -1,9 +1,10 @@
-package ru.miet.pattern.lab78.flappybird;
+package ru.miet.pattern.lab78.flappybird.controller;
 
-
-import ru.miet.pattern.lab78.flappybird.factory.AbstractFactory;
-import ru.miet.pattern.lab78.flappybird.factory.PipeFactory;
-import ru.miet.pattern.lab78.flappybird.factory.RectangleFactory;
+import ru.miet.pattern.lab78.flappybird.model.factory.AbstractFactory;
+import ru.miet.pattern.lab78.flappybird.model.factory.PipeFactory;
+import ru.miet.pattern.lab78.flappybird.model.factory.RectangleFactory;
+import ru.miet.pattern.lab78.flappybird.model.bird.Bird;
+import ru.miet.pattern.lab78.flappybird.view.GamePanel;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -19,13 +20,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class FlappyBird implements ActionListener, KeyListener {
+import static ru.miet.pattern.lab78.flappybird.utils.GraphicUtils.*;
 
-    public final static int WIDTH = 640;
-
-    public final static int HEIGHT = 480;
-
-    public final static int FPS = 60;
+public class FlappyBirdController implements ActionListener, KeyListener {
 
     private final Bird bird;
 
@@ -43,13 +40,11 @@ public class FlappyBird implements ActionListener, KeyListener {
 
     private int scroll;
 
-    private static FlappyBird flappyBird;
-
     private final AbstractFactory rectangleFactory;
 
-    private FlappyBird() throws IOException {
+    public FlappyBirdController() throws IOException {
         bird = Bird.getInstance();
-        panel = new GamePanel(bird, rectangles, this, new PipeFactory());
+        panel = new GamePanel(bird, rectangles, new PipeFactory());
         frame.add(panel);
         frame.setSize(WIDTH, HEIGHT);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -64,13 +59,6 @@ public class FlappyBird implements ActionListener, KeyListener {
 
     public void start() {
         timer.start();
-    }
-
-    public static FlappyBird getInstance() throws IOException {
-        if (flappyBird == null) {
-            flappyBird = new FlappyBird();
-        }
-        return flappyBird;
     }
 
     @Override
@@ -96,6 +84,7 @@ public class FlappyBird implements ActionListener, KeyListener {
             }
             rectangles.removeAll(toRemoveList);
             time++;
+            ((GamePanel)panel).setTime(time);
             scroll++;
 
             if (bird.getyCoord() > HEIGHT || bird.getyCoord() + Bird.RAD < 0) {
@@ -109,6 +98,8 @@ public class FlappyBird implements ActionListener, KeyListener {
                 time = 0;
                 scroll = 0;
                 paused = true;
+                ((GamePanel)panel).setPaused(true);
+                ((GamePanel)panel).setTime(time);
             }
         }
     }
@@ -124,6 +115,8 @@ public class FlappyBird implements ActionListener, KeyListener {
             bird.jump();
         } else if (Objects.equals(keyEvent.getKeyCode(), KeyEvent.VK_SPACE)) {
             paused = false;
+            ((GamePanel)panel).setPaused(false);
+
         }
     }
 
@@ -132,11 +125,4 @@ public class FlappyBird implements ActionListener, KeyListener {
 
     }
 
-    public boolean isPaused() {
-        return paused;
-    }
-
-    public int getScore() {
-        return time;
-    }
 }

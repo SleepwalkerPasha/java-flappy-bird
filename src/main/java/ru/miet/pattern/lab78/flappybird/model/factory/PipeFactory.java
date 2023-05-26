@@ -1,6 +1,4 @@
-package ru.miet.pattern.lab78.flappybird.factory;
-
-import ru.miet.pattern.lab78.flappybird.FlappyBird;
+package ru.miet.pattern.lab78.flappybird.model.factory;
 
 import javax.imageio.ImageIO;
 import java.awt.Color;
@@ -11,6 +9,8 @@ import java.awt.Rectangle;
 import java.awt.geom.AffineTransform;
 import java.io.File;
 import java.io.IOException;
+
+import static ru.miet.pattern.lab78.flappybird.utils.GraphicUtils.HEIGHT;
 
 public class PipeFactory extends AbstractFactory {
 
@@ -25,7 +25,7 @@ public class PipeFactory extends AbstractFactory {
         graphics2D.setColor(Color.GREEN);
         AffineTransform affineTransform = graphics2D.getTransform();
         graphics2D.translate(rectangle.x + PIPE_W / 2, rectangle.y + PIPE_H / 2);
-        if (rectangle.y < FlappyBird.HEIGHT / 2) {
+        if (rectangle.y < HEIGHT / 2) {
             graphics2D.translate(0, rectangle.height);
             graphics2D.rotate(Math.PI);
         }
