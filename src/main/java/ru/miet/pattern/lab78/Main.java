@@ -1,6 +1,6 @@
 package ru.miet.pattern.lab78;
 
-import ru.miet.pattern.lab78.flappybird.FlappyBird;
+import ru.miet.pattern.lab78.flappybird.presenter.FlappyBird;
 
 import java.io.IOException;
 

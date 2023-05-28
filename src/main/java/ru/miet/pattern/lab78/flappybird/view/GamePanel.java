@@ -1,6 +1,8 @@
-package ru.miet.pattern.lab78.flappybird;
+package ru.miet.pattern.lab78.flappybird.view;
 
-import ru.miet.pattern.lab78.flappybird.factory.PipeFactory;
+import ru.miet.pattern.lab78.flappybird.model.Bird;
+import ru.miet.pattern.lab78.flappybird.presenter.FlappyBird;
+import ru.miet.pattern.lab78.flappybird.view.factory.PipeFactory;
 
 import javax.swing.JPanel;
 import java.awt.Color;

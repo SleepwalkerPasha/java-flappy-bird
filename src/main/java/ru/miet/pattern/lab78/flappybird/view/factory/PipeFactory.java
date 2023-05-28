@@ -1,6 +1,6 @@
-package ru.miet.pattern.lab78.flappybird.factory;
+package ru.miet.pattern.lab78.flappybird.view.factory;
 
-import ru.miet.pattern.lab78.flappybird.FlappyBird;
+import ru.miet.pattern.lab78.flappybird.presenter.FlappyBird;
 
 import javax.imageio.ImageIO;
 import java.awt.Color;

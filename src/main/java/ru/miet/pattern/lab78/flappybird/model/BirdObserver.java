@@ -1,4 +1,4 @@
-package ru.miet.pattern.lab78.flappybird;
+package ru.miet.pattern.lab78.flappybird.model;
 
 import java.awt.Graphics;
 

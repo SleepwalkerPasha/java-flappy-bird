@@ -1,9 +1,11 @@
-package ru.miet.pattern.lab78.flappybird;
+package ru.miet.pattern.lab78.flappybird.presenter;
 
 
-import ru.miet.pattern.lab78.flappybird.factory.AbstractFactory;
-import ru.miet.pattern.lab78.flappybird.factory.PipeFactory;
-import ru.miet.pattern.lab78.flappybird.factory.RectangleFactory;
+import ru.miet.pattern.lab78.flappybird.model.Bird;
+import ru.miet.pattern.lab78.flappybird.view.GamePanel;
+import ru.miet.pattern.lab78.flappybird.view.factory.AbstractFactory;
+import ru.miet.pattern.lab78.flappybird.view.factory.PipeFactory;
+import ru.miet.pattern.lab78.flappybird.view.factory.RectangleFactory;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
